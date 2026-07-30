@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | Anuncios Santo Domingo</title>
+    <meta name="description" content="Conoce la historia, misión e impacto social del proyecto comunal Anuncios Santo Domingo en Huánuco.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style> body { font-family: 'Inter', sans-serif; } </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- NAVEGACIÓN -->
+    <header class="sticky top-0 z-40 bg-indigo-950/95 backdrop-blur-md text-white border-b border-indigo-900/50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="bg-amber-400 text-indigo-950 p-2.5 rounded-2xl shadow-md font-extrabold text-2xl">
+                        <i class="fa-solid fa-thumbtack -rotate-12"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl sm:text-2xl font-black tracking-tight text-white">Anuncios<span class="text-amber-400">SantoDomingo</span></span>
+                        <p class="text-xs text-indigo-300 hidden sm:block">Pizarra Digital Comunitaria de Huánuco</p>
+                    </div>
+                </a>
+
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-semibold text-indigo-100">
+                    <a href="index.html" class="px-3.5 py-2 rounded-xl hover:bg-indigo-900/60 hover:text-amber-300">Inicio</a>
+                    <a href="avisos.html" class="px-3.5 py-2 rounded-xl hover:bg-indigo-900/60 hover:text-amber-300">Avisos</a>
+                    <a href="servicios.html" class="px-3.5 py-2 rounded-xl hover:bg-indigo-900/60 hover:text-amber-300">Servicios</a>
+                    <a href="nosotros.html" class="px-3.5 py-2 rounded-xl bg-indigo-900 text-amber-300 font-extrabold shadow-sm">Nosotros</a>
+                    <a href="contacto.html" class="px-3.5 py-2 rounded-xl hover:bg-indigo-900/60 hover:text-amber-300">Contacto</a>
+                </nav>
+
+                <div class="hidden lg:flex items-center space-x-3">
+                    <button onclick="openLoginModal()" class="text-xs font-bold text-indigo-200 hover:text-white px-3.5 py-2.5 rounded-xl border border-indigo-700/60 flex items-center gap-1.5"><i class="fa-solid fa-right-to-bracket text-amber-400"></i> Ingresar</button>
+                    <button onclick="openRegisterModal()" class="text-xs font-bold text-white bg-indigo-800 hover:bg-indigo-700 px-3.5 py-2.5 rounded-xl border border-indigo-600 flex items-center gap-1.5"><i class="fa-solid fa-user-plus text-green-400"></i> Registrarse</button>
+                    <button onclick="openPublishModal()" class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2.5 rounded-xl text-xs font-extrabold flex items-center gap-2 shadow"><i class="fa-solid fa-circle-plus"></i> Publicar Gratis</button>
+                </div>
+
+                <div class="flex lg:hidden items-center gap-2">
+                    <button onclick="openPublishModal()" class="bg-emerald-500 text-white px-3 py-2 rounded-xl text-xs font-bold">Publicar</button>
+                    <button onclick="toggleMobileMenu()" class="p-2 rounded-xl bg-indigo-900 text-indigo-200"><i class="fa-solid fa-bars text-xl"></i></button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-indigo-950 border-b border-indigo-800 px-4 pt-3 pb-6 space-y-3">
+            <nav class="flex flex-col space-y-2 font-semibold text-sm">
+                <a href="index.html" class="px-3 py-2 rounded-lg">Inicio</a>
+                <a href="avisos.html" class="px-3 py-2 rounded-lg">Avisos</a>
+                <a href="servicios.html" class="px-3 py-2 rounded-lg">Servicios</a>
+                <a href="nosotros.html" class="px-3 py-2 rounded-lg bg-indigo-900 text-amber-300">Nosotros</a>
+                <a href="contacto.html" class="px-3 py-2 rounded-lg">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- BANNER HERO -->
+    <section class="bg-indigo-950 text-white py-12 border-b border-indigo-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="bg-amber-400/10 text-amber-300 border border-amber-400/30 text-xs font-extrabold uppercase px-3 py-1 rounded-full">Innovación Social</span>
+            <h1 class="text-3xl sm:text-5xl font-black mt-3">Sobre el Proyecto Anuncios Santo Domingo</h1>
+            <p class="text-indigo-200 text-sm sm:text-base max-w-2xl mx-auto mt-2">Conectando vecinos de Huánuco a través de la digitalización de avisos comunitarios.</p>
+        </div>
+    </section>
+
+    <!-- HISTORIA Y MISIÓN -->
+    <section class="py-16 bg-white border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-4">
+                    <h2 class="text-2xl sm:text-3xl font-black text-slate-900">Digitalizando la Pizarra Comunitaria</h2>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        En muchas comunidades de Santo Domingo y Huánuco, la forma tradicional de alquilar un cuarto o buscar trabajo es colocar papelitos en posters y murales públicos.
+                    </p>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Este proyecto universitario toma esa costumbre local y la traslada al mundo digital para que cualquier vecino pueda publicar y consultar avisos directo en su teléfono.
+                    </p>
+                </div>
+                <div class="bg-indigo-900 text-white rounded-3xl p-8 shadow-xl space-y-4">
+                    <div class="w-12 h-12 bg-amber-400 text-indigo-950 rounded-2xl flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold">Nuestra Misión</h3>
+                    <p class="text-xs text-indigo-100 leading-relaxed">
+                        Facilitar el acceso libre a oportunidades de empleo local y alquileres dignos sin cobro de comisiones, reduciendo la brecha digital en la región.
+                    </p>
+                </div>
+            </div>
+
+            <!-- VALORES CLAVE -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6">
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xl mx-auto mb-3">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3 class="font-extrabold text-slate-900 text-base mb-1">Inclusión</h3>
+                    <p class="text-xs text-slate-600">Acceso 100% gratuito sin barreras para todos los ciudadanos.</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-xl mx-auto mb-3">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-extrabold text-slate-900 text-base mb-1">Transparencia</h3>
+                    <p class="text-xs text-slate-600">Trato directo entre vecino y vecino sin intermediarios.</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xl mx-auto mb-3">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h3 class="font-extrabold text-slate-900 text-base mb-1">Sostenibilidad</h3>
+                    <p class="text-xs text-slate-600">Reducción del uso de papel impreso y contaminación visual en las calles.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER COMÚN -->
+    <footer class="bg-slate-950 text-slate-400 border-t border-slate-800 pt-12 pb-8 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 pb-8 border-b border-slate-800">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2 text-white">
+                        <div class="bg-amber-400 text-slate-950 p-1.5 rounded-lg font-black text-lg"><i class="fa-solid fa-thumbtack"></i></div>
+                        <span class="font-extrabold text-lg tracking-tight">AnunciosSantoDomingo</span>
+                    </div>
+                    <p class="text-slate-400">Digitalización de avisos comunitarios.</p>
+                </div>
+                <div>
+                    <h4 class="font-extrabold text-slate-200 uppercase tracking-wider mb-3 text-xs">Navegación</h4>
+                    <ul class="space-y-2 font-medium">
+                        <li><a href="index.html" class="hover:text-amber-400">Inicio</a></li>
+                        <li><a href="avisos.html" class="hover:text-amber-400">Avisos Clasificados</a></li>
+                        <li><a href="servicios.html" class="hover:text-amber-400">Servicios</a></li>
+                        <li><a href="nosotros.html" class="hover:text-amber-400">Nosotros</a></li>
+                        <li><a href="contacto.html" class="hover:text-amber-400">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-extrabold text-slate-200 uppercase tracking-wider mb-3 text-xs">Contacto</h4>
+                    <p><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i> Santo Domingo, Huánuco, Perú</p>
+                </div>
+            </div>
+            <p class="text-center text-slate-500 text-[11px]">© 2026 AnunciosSantoDomingo.</p>
+        </div>
+    </footer>
+
+    <!-- INCLUSIÓN DE MODALES -->
+    <div id="publish-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+            <div class="bg-indigo-950 p-5 text-white flex justify-between items-center">
+                <div class="flex items-center gap-2"><i class="fa-solid fa-file-pen text-xl text-amber-400"></i><h2 class="font-extrabold text-lg">Escribe tu Aviso Digital</h2></div>
+                <button onclick="closePublishModal()" class="text-indigo-300 hover:text-white text-lg p-1"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-6 overflow-y-auto space-y-4 flex-grow">
+                <form id="publish-form" onsubmit="handlePublishSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">1. Categoría</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="border-2 rounded-xl p-3 flex items-center gap-2 cursor-pointer hover:bg-slate-50 border-slate-200" id="label-opt-empleo">
+                                <input type="radio" name="opt-category" value="empleo" checked onclick="updateFormAesthetics('empleo')">
+                                <span class="text-xs font-bold text-slate-800">💼 Empleo</span>
+                            </label>
+                            <label class="border-2 rounded-xl p-3 flex items-center gap-2 cursor-pointer hover:bg-slate-50 border-slate-200" id="label-opt-alquiler">
+                                <input type="radio" name="opt-category" value="alquiler" onclick="updateFormAesthetics('alquiler')">
+                                <span class="text-xs font-bold text-slate-800">🏠 Alquiler</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">2. Distrito</label>
+                        <select id="form-district" required class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm">
+                            <option value="">-- Selecciona el distrito --</option>
+                            <option value="Huánuco Centro">Huánuco Centro</option>
+                            <option value="Amarilis">Amarilis / Paucarbamba</option>
+                            <option value="Pillco Marca">Pillco Marca</option>
+                            <option value="Otros">Otros distritos</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">3. Título del Aviso</label>
+                        <input type="text" id="form-title" required maxlength="40" placeholder="ej. SE NECESITA MESERA" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold uppercase">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">4. Detalle del Anuncio</label>
+                        <textarea id="form-desc" required rows="3" maxlength="250" placeholder="Describe los detalles y requisitos." class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">5. Celular (WhatsApp)</label>
+                        <input type="tel" id="form-phone" required pattern="[0-9]{9}" placeholder="987654321" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold">
+                    </div>
+                    <div class="bg-amber-50 p-3 rounded-xl border border-amber-200">
+                        <label class="block text-xs font-bold text-amber-800 uppercase mb-1">🔑 6. PIN de Borrado (4 dígitos)</label>
+                        <input type="password" id="form-pin" required pattern="[0-9]{4}" placeholder="1234" class="w-24 px-3 py-2 bg-white border border-amber-300 rounded-lg text-center font-bold text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">7. Color del Papel</label>
+                        <div class="flex gap-3">
+                            <label><input type="radio" name="opt-color" value="celeste" checked class="sr-only peer"><div class="w-8 h-8 rounded-full bg-sky-200 border-2 peer-checked:border-slate-900"></div></label>
+                            <label><input type="radio" name="opt-color" value="amarillo" class="sr-only peer"><div class="w-8 h-8 rounded-full bg-amber-200 border-2 peer-checked:border-slate-900"></div></label>
+                            <label><input type="radio" name="opt-color" value="verde" class="sr-only peer"><div class="w-8 h-8 rounded-full bg-emerald-200 border-2 peer-checked:border-slate-900"></div></label>
+                            <label><input type="radio" name="opt-color" value="rosado" class="sr-only peer"><div class="w-8 h-8 rounded-full bg-pink-200 border-2 peer-checked:border-slate-900"></div></label>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl text-sm transition">Colgar en la Pizarra</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL LOGIN -->
+    <div id="login-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full shadow-2xl p-6 relative">
+            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-lg"><i class="fa-solid fa-xmark"></i></button>
+            <div class="text-center mb-4"><h3 class="text-xl font-extrabold text-slate-900">Ingreso al Sistema</h3></div>
+            <form onsubmit="handleLoginSubmit(event)" class="space-y-3">
+                <input type="text" required placeholder="Usuario o correo" class="w-full px-3 py-2 bg-slate-50 border rounded-xl text-sm">
+                <input type="password" required placeholder="Contraseña" class="w-full px-3 py-2 bg-slate-50 border rounded-xl text-sm">
+                <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-2 rounded-xl text-sm">Iniciar Sesión</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL REGISTRO -->
+    <div id="register-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full shadow-2xl p-6 relative">
+            <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-lg"><i class="fa-solid fa-xmark"></i></button>
+            <div class="text-center mb-4"><h3 class="text-xl font-extrabold text-slate-900">Crear Cuenta</h3></div>
+            <form onsubmit="handleRegisterSubmit(event)" class="space-y-3">
+                <input type="text" required placeholder="Nombre completo" class="w-full px-3 py-2 bg-slate-50 border rounded-xl text-sm">
+                <input type="tel" required pattern="[0-9]{9}" placeholder="Celular" class="w-full px-3 py-2 bg-slate-50 border rounded-xl text-sm">
+                <input type="password" required placeholder="Contraseña" class="w-full px-3 py-2 bg-slate-50 border rounded-xl text-sm">
+                <button type="submit" class="w-full bg-emerald-600 text-white font-bold py-2 rounded-xl text-sm">Registrarse</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL EXITO -->
+    <div id="success-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl relative">
+            <h3 class="text-xl font-extrabold text-slate-900 mb-2">¡Aviso Publicado!</h3>
+            <div class="bg-amber-50 rounded-2xl p-3 border border-amber-200 mb-4">
+                <p class="text-[10px] uppercase font-bold text-amber-800">PIN de Retiro:</p>
+                <p id="display-saved-pin" class="text-2xl font-black text-slate-900 mt-1">----</p>
+            </div>
+            <button onclick="closeSuccessModal()" class="w-full bg-slate-900 text-white font-bold py-2 rounded-xl text-sm">Entendido</button>
+        </div>
+    </div>
+
+    <!-- MODAL BORRADO CON PIN -->
+    <div id="delete-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl relative">
+            <h3 class="text-lg font-extrabold text-slate-900 mb-2">Retirar Anuncio</h3>
+            <form onsubmit="handleDeleteSubmit(event)" class="space-y-4">
+                <input type="hidden" id="delete-ad-id">
+                <input type="password" id="delete-pin-input" required pattern="[0-9]{4}" placeholder="****" class="w-32 px-4 py-2 bg-slate-100 border rounded-xl text-center font-bold text-xl mx-auto block">
+                <div class="flex gap-2">
+                    <button type="button" onclick="closeDeleteModal()" class="w-1/2 bg-slate-100 text-slate-700 font-bold py-2 rounded-xl text-xs">Cancelar</button>
+                    <button type="submit" class="w-1/2 bg-rose-600 text-white font-bold py-2 rounded-xl text-xs">Retirar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast-msg" class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl z-50 hidden flex items-center gap-3 border border-slate-700 transform translate-y-10 transition duration-300">
+        <span id="toast-icon" class="text-amber-400 text-lg"><i class="fa-solid fa-circle-info"></i></span>
+        <span id="toast-text" class="text-xs font-bold">Notificación</span>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
