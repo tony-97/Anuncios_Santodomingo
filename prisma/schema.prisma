@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+enum Categoria {
+  EMPLEO
+  ALQUILER
+}
+
+enum Color {
+  CELESTE
+  AMARILLO
+  VERDE
+  ROSADO
+}
+
+model User {
+  id           Int       @id @default(autoincrement())
+  nombre       String    @db.VarChar(100)
+  telefono     String    @unique @db.VarChar(9)
+  password     String    @db.VarChar(255)
+  verificado   Boolean   @default(false)
+  creadoEn     DateTime  @default(now()) @map("creado_en")
+  actualizadoEn DateTime @updatedAt @map("actualizado_en")
+
+  anuncios Anuncio[]
+
+  @@map("usuarios")
+}
+
+model Anuncio {
+  id          Int       @id @default(autoincrement())
+  categoria   Categoria
+  distrito    String    @db.VarChar(50)
+  titulo      String    @db.VarChar(100)
+  descripcion String    @db.Text
+  telefono    String    @db.VarChar(9)
+  color       Color     @default(CELESTE)
+  pin         String    @db.VarChar(255)
+  activo      Boolean   @default(true)
+  expiraEn    DateTime  @map("expira_en")
+  creadoEn    DateTime  @default(now()) @map("creado_en")
+  actualizadoEn DateTime @updatedAt @map("actualizado_en")
+
+  userId Int  @map("user_id")
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([categoria])
+  @@index([distrito])
+  @@index([activo, expiraEn])
+  @@index([userId])
+  @@map("anuncios")
+}
+
+model OtpCode {
+  id        Int      @id @default(autoincrement())
+  telefono  String   @db.VarChar(9)
+  codigo    String   @db.VarChar(6)
+  expiraEn  DateTime @map("expira_en")
+  usado     Boolean  @default(false)
+  creadoEn  DateTime @default(now()) @map("creado_en")
+
+  @@index([telefono, codigo])
+  @@map("otp_codes")
+}
