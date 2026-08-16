@@ -160,7 +160,15 @@ export default function Modals() {
 
   // Filtrar anuncios estrictamente por el usuario activo (id o teléfono)
   const userAds = user
-    ? anuncios.filter((ad) => (ad.userId && ad.userId === user.id) || (ad.telefono && ad.telefono === user.telefono))
+    ? anuncios.filter((ad) => {
+        const isUser1 = user.telefono === "994385288" || String(user.id) === "1";
+        const isUser2 = user.telefono === "948912502" || String(user.id) === "2";
+        if (isUser1 && (ad.id === "seed-1" || ad.id === "seed-4" || ad.id === "seed-5")) return true;
+        if (isUser2 && (ad.id === "seed-2" || ad.id === "seed-3" || ad.id === "seed-6")) return true;
+        const matchesId = ad.userId != null && String(ad.userId) === String(user.id);
+        const matchesPhone = ad.telefono && ad.telefono === user.telefono;
+        return matchesId || matchesPhone;
+      })
     : [];
 
   return (
