@@ -106,11 +106,10 @@ export default function Modals() {
                   </label>
                   <div className="grid grid-cols-2 gap-3">
                     <label
-                      className={`border-2 rounded-xl p-3 flex items-center gap-2 cursor-pointer transition ${
-                        category === "empleo"
+                      className={`border-2 rounded-xl p-3 flex items-center gap-2 cursor-pointer transition ${category === "empleo"
                           ? "border-indigo-600 bg-indigo-50/50"
                           : "border-slate-200 hover:bg-slate-50"
-                      }`}
+                        }`}
                     >
                       <input
                         type="radio"
@@ -124,11 +123,10 @@ export default function Modals() {
                       </span>
                     </label>
                     <label
-                      className={`border-2 rounded-xl p-3 flex items-center gap-2 cursor-pointer transition ${
-                        category === "alquiler"
+                      className={`border-2 rounded-xl p-3 flex items-center gap-2 cursor-pointer transition ${category === "alquiler"
                           ? "border-indigo-600 bg-indigo-50/50"
                           : "border-slate-200 hover:bg-slate-50"
-                      }`}
+                        }`}
                     >
                       <input
                         type="radio"
@@ -247,17 +245,15 @@ export default function Modals() {
                             className="sr-only peer"
                           />
                           <div
-                            className={`w-8 h-8 rounded-full border-2 ${
-                              color === c ? "border-slate-900 scale-110" : "border-transparent"
-                            } ${
-                              c === "celeste"
+                            className={`w-8 h-8 rounded-full border-2 ${color === c ? "border-slate-900 scale-110" : "border-transparent"
+                              } ${c === "celeste"
                                 ? "bg-sky-200"
                                 : c === "amarillo"
-                                ? "bg-amber-200"
-                                : c === "verde"
-                                ? "bg-emerald-200"
-                                : "bg-pink-200"
-                            }`}
+                                  ? "bg-amber-200"
+                                  : c === "verde"
+                                    ? "bg-emerald-200"
+                                    : "bg-pink-200"
+                              }`}
                           ></div>
                         </label>
                       )

@@ -63,31 +63,28 @@ function AvisosContent() {
               <div className="flex flex-wrap gap-2 w-full sm:w-auto">
                 <button
                   onClick={() => setCurrentCategory("todos")}
-                  className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition duration-200 cursor-pointer ${
-                    currentCategory === "todos"
-                      ? "bg-indigo-600 text-white border-indigo-600 shadow-sm"
-                      : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
-                  }`}
+                  className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition duration-200 cursor-pointer ${currentCategory === "todos"
+                    ? "bg-indigo-600 text-white border-indigo-600 shadow-sm"
+                    : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
+                    }`}
                 >
                   Todos los Avisos
                 </button>
                 <button
                   onClick={() => setCurrentCategory("empleo")}
-                  className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition duration-200 cursor-pointer ${
-                    currentCategory === "empleo"
-                      ? "bg-indigo-600 text-white border-indigo-600 shadow-sm"
-                      : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
-                  }`}
+                  className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition duration-200 cursor-pointer ${currentCategory === "empleo"
+                    ? "bg-indigo-600 text-white border-indigo-600 shadow-sm"
+                    : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
+                    }`}
                 >
                   💼 Empleos
                 </button>
                 <button
                   onClick={() => setCurrentCategory("alquiler")}
-                  className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition duration-200 cursor-pointer ${
-                    currentCategory === "alquiler"
-                      ? "bg-indigo-600 text-white border-indigo-600 shadow-sm"
-                      : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
-                  }`}
+                  className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition duration-200 cursor-pointer ${currentCategory === "alquiler"
+                    ? "bg-indigo-600 text-white border-indigo-600 shadow-sm"
+                    : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
+                    }`}
                 >
                   🏠 Alquileres
                 </button>
@@ -150,28 +147,6 @@ export default function AvisosPage() {
 
   return (
     <div className="flex flex-col min-h-full flex-grow">
-      {/* CABECERA DE LA PIZARRA DE AVISOS */}
-      <section className="bg-indigo-950 text-white py-8 border-b border-indigo-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <div>
-              <h1 className="text-2xl sm:text-4xl font-black">
-                Pizarra Virtual de Avisos Comunales
-              </h1>
-              <p className="text-indigo-200 text-xs sm:text-sm mt-1">
-                Explora ofertas de empleo y alquileres en Huánuco, Amarilis, Pillco Marca y Santo Domingo
-              </p>
-            </div>
-            <button
-              onClick={() => openModal("publish")}
-              className="bg-emerald-500 hover:bg-emerald-400 text-white font-extrabold px-5 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow cursor-pointer"
-            >
-              <i className="fa-solid fa-circle-plus"></i> Publicar Aviso Gratis
-            </button>
-          </div>
-        </div>
-      </section>
-
       <Suspense fallback={<div className="p-12 text-center text-slate-500">Cargando avisos...</div>}>
         <AvisosContent />
       </Suspense>
