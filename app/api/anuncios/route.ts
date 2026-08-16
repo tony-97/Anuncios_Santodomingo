@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { getUserFromRequest, hashPin } from "@/lib/auth";
+import { getUserFromRequest } from "@/lib/auth";
 import { Categoria } from "@prisma/client";
 
 // ── GET /api/anuncios ─ List active, non-expired ads with filters ──
@@ -78,18 +78,18 @@ export async function POST(request: NextRequest) {
     const user = await getUserFromRequest(request);
     if (!user) {
       return Response.json(
-        { error: "No autorizado. Inicia sesión primero." },
+        { error: "No autorizado. Inicia sesión primero con tu celular." },
         { status: 401 }
       );
     }
 
     const body = await request.json();
-    const { categoria, distrito, titulo, descripcion, telefono, color, pin } = body;
+    const { categoria, distrito, titulo, descripcion, telefono, color } = body;
 
     // ── Validation ──────────────────────────────────────────
-    if (!categoria || !distrito || !titulo || !descripcion || !telefono || !pin) {
+    if (!categoria || !distrito || !titulo || !descripcion || !telefono) {
       return Response.json(
-        { error: "Todos los campos son obligatorios." },
+        { error: "Todos los campos principales son obligatorios." },
         { status: 400 }
       );
     }
@@ -108,15 +108,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!/^\d{4}$/.test(pin)) {
-      return Response.json(
-        { error: "El PIN debe ser de 4 dígitos." },
-        { status: 400 }
-      );
-    }
-
     // ── Create ad ───────────────────────────────────────────
-    const hashedPin = await hashPin(pin);
     const expiraEn = new Date(Date.now() + 15 * 24 * 60 * 60 * 1000); // 15 days
 
     const anuncio = await prisma.anuncio.create({
@@ -127,7 +119,7 @@ export async function POST(request: NextRequest) {
         descripcion: descripcion.trim(),
         telefono: telefono.trim(),
         color: color?.toUpperCase() || "CELESTE",
-        pin: hashedPin,
+        pin: "DEPRECATED", // PIN removed as per project requirements
         expiraEn,
         userId: user.id,
       },

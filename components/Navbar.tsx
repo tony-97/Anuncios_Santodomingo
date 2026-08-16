@@ -7,7 +7,7 @@ import { useAds } from "@/context/AdsContext";
 
 export default function Navbar() {
     const pathname = usePathname();
-    const { openModal } = useAds();
+    const { user, isLoggedIn, logout, handlePublishClick, handleMyAdsClick, openModal } = useAds();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const isActive = (path: string) => pathname === path;
@@ -82,24 +82,64 @@ export default function Navbar() {
                         </Link>
                     </nav>
 
-                    {/* Botones Acción */}
-                    <div className="hidden lg:flex items-center space-x-3">
+                    {/* Botones Acción Desktop */}
+                    <div className="hidden lg:flex items-center space-x-2.5">
+                        {isLoggedIn && user ? (
+                            <>
+                                {/* Perfil de Usuario Logueado */}
+                                <div className="flex items-center gap-2.5 bg-indigo-900/80 border border-indigo-700/60 px-3 py-1.5 rounded-2xl shadow-inner">
+                                    <div className="w-8 h-8 rounded-xl bg-amber-400 text-indigo-950 flex items-center justify-center font-bold text-xs shadow">
+                                        <i className="fa-solid fa-user-check"></i>
+                                    </div>
+                                    <div className="text-left pr-1">
+                                        <span className="block text-xs font-black text-white leading-tight max-w-[130px] truncate">
+                                            {user.nombre || user.telefono}
+                                        </span>
+                                        <span className="text-[10px] text-emerald-400 font-bold flex items-center gap-1">
+                                            <i className="fa-solid fa-circle-check text-[9px]"></i> {user.telefono}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <button
+                                    onClick={handleMyAdsClick}
+                                    className="text-xs font-bold text-amber-300 hover:text-white px-3 py-2.5 rounded-xl border border-amber-400/40 hover:bg-amber-400/10 transition duration-150 flex items-center gap-1.5 cursor-pointer"
+                                    title="Ver y administrar mis avisos"
+                                >
+                                    <i className="fa-solid fa-rectangle-list text-amber-400"></i>{" "}
+                                    Mis Anuncios
+                                </button>
+
+                                <button
+                                    onClick={logout}
+                                    className="text-xs font-bold text-rose-300 hover:text-white px-3 py-2.5 rounded-xl border border-rose-500/40 hover:bg-rose-600/80 transition duration-150 flex items-center gap-1.5 cursor-pointer shadow-sm"
+                                    title="Cerrar sesión actual"
+                                >
+                                    <i className="fa-solid fa-right-from-bracket text-rose-400"></i>{" "}
+                                    Salir
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <button
+                                    onClick={() => openModal("login")}
+                                    className="text-xs font-bold text-indigo-200 hover:text-white px-3 py-2.5 rounded-xl border border-indigo-700/60 hover:border-indigo-500 hover:bg-indigo-900/50 transition duration-150 flex items-center gap-1.5 cursor-pointer"
+                                >
+                                    <i className="fa-solid fa-right-to-bracket text-amber-400"></i>{" "}
+                                    Ingresar
+                                </button>
+                                <button
+                                    onClick={() => openModal("register")}
+                                    className="text-xs font-bold text-indigo-200 hover:text-white px-3 py-2.5 rounded-xl border border-indigo-700/60 hover:border-indigo-500 hover:bg-indigo-900/50 transition duration-150 flex items-center gap-1.5 cursor-pointer"
+                                >
+                                    <i className="fa-solid fa-user-plus text-emerald-400"></i>{" "}
+                                    Registrarse
+                                </button>
+                            </>
+                        )}
+
                         <button
-                            onClick={() => openModal("login")}
-                            className="text-xs font-bold text-indigo-200 hover:text-white px-3.5 py-2.5 rounded-xl border border-indigo-700/60 hover:border-indigo-500 transition duration-150 flex items-center gap-1.5 cursor-pointer"
-                        >
-                            <i className="fa-solid fa-right-to-bracket text-amber-400"></i>{" "}
-                            Ingresar
-                        </button>
-                        <button
-                            onClick={() => openModal("register")}
-                            className="text-xs font-bold text-white bg-indigo-800 hover:bg-indigo-700 px-3.5 py-2.5 rounded-xl border border-indigo-600 transition duration-150 flex items-center gap-1.5 shadow cursor-pointer"
-                        >
-                            <i className="fa-solid fa-user-plus text-green-400"></i>{" "}
-                            Registrarse
-                        </button>
-                        <button
-                            onClick={() => openModal("publish")}
+                            onClick={handlePublishClick}
                             className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2.5 rounded-xl text-xs font-extrabold transition duration-200 flex items-center gap-2 shadow-lg hover:scale-105 active:scale-95 cursor-pointer"
                         >
                             <i className="fa-solid fa-circle-plus text-sm"></i> Publicar
@@ -110,7 +150,7 @@ export default function Navbar() {
                     {/* Botón Hamburguesa Móvil */}
                     <div className="flex lg:hidden items-center gap-2">
                         <button
-                            onClick={() => openModal("publish")}
+                            onClick={handlePublishClick}
                             className="bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer"
                         >
                             <i className="fa-solid fa-plus"></i> Publicar
@@ -129,6 +169,28 @@ export default function Navbar() {
             {/* Menú Móvil */}
             {mobileMenuOpen && (
                 <div className="lg:hidden bg-indigo-950 border-b border-indigo-800 px-4 pt-3 pb-6 space-y-3">
+                    {/* Tarjeta de usuario si está logueado en móvil */}
+                    {isLoggedIn && user && (
+                        <div className="bg-indigo-900/90 border border-indigo-700 p-3 rounded-2xl flex items-center justify-between mb-3 shadow-inner">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-xl bg-amber-400 text-indigo-950 flex items-center justify-center font-bold text-sm shadow">
+                                    <i className="fa-solid fa-user-check"></i>
+                                </div>
+                                <div>
+                                    <span className="block text-sm font-extrabold text-white">
+                                        {user.nombre || "Usuario"}
+                                    </span>
+                                    <span className="text-xs text-emerald-400 font-semibold flex items-center gap-1">
+                                        <i className="fa-solid fa-phone text-[10px]"></i> {user.telefono}
+                                    </span>
+                                </div>
+                            </div>
+                            <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 text-[10px] font-black px-2 py-0.5 rounded-full">
+                                Verificado
+                            </span>
+                        </div>
+                    )}
+
                     <nav className="flex flex-col space-y-2 font-semibold text-sm">
                         <Link
                             href="/"
@@ -181,27 +243,54 @@ export default function Navbar() {
                             Contacto
                         </Link>
                     </nav>
+
                     <div className="pt-4 border-t border-indigo-900 flex flex-col gap-2">
-                        <button
-                            onClick={() => {
-                                setMobileMenuOpen(false);
-                                openModal("login");
-                            }}
-                            className="w-full text-center py-2.5 text-xs font-bold text-white bg-indigo-900 rounded-xl border border-indigo-700 flex items-center justify-center gap-2 cursor-pointer"
-                        >
-                            <i className="fa-solid fa-right-to-bracket text-amber-400"></i>{" "}
-                            Ingresar
-                        </button>
-                        <button
-                            onClick={() => {
-                                setMobileMenuOpen(false);
-                                openModal("register");
-                            }}
-                            className="w-full text-center py-2.5 text-xs font-bold text-white bg-indigo-800 rounded-xl border border-indigo-600 flex items-center justify-center gap-2 cursor-pointer"
-                        >
-                            <i className="fa-solid fa-user-plus text-green-400"></i> Crear
-                            Cuenta
-                        </button>
+                        {isLoggedIn && user ? (
+                            <>
+                                <button
+                                    onClick={() => {
+                                        setMobileMenuOpen(false);
+                                        handleMyAdsClick();
+                                    }}
+                                    className="w-full text-center py-2.5 text-xs font-bold text-amber-300 bg-indigo-900/90 rounded-xl border border-amber-400/40 flex items-center justify-center gap-2 cursor-pointer"
+                                >
+                                    <i className="fa-solid fa-rectangle-list text-amber-400"></i>{" "}
+                                    Mis Anuncios
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        setMobileMenuOpen(false);
+                                        logout();
+                                    }}
+                                    className="w-full text-center py-2.5 text-xs font-bold text-rose-200 bg-rose-950/60 rounded-xl border border-rose-700/60 hover:bg-rose-900 flex items-center justify-center gap-2 cursor-pointer"
+                                >
+                                    <i className="fa-solid fa-right-from-bracket text-rose-400"></i>{" "}
+                                    Cerrar Sesión
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <button
+                                    onClick={() => {
+                                        setMobileMenuOpen(false);
+                                        openModal("login");
+                                    }}
+                                    className="w-full text-center py-2.5 text-xs font-bold text-white bg-indigo-900 rounded-xl border border-indigo-700 flex items-center justify-center gap-2 cursor-pointer"
+                                >
+                                    <i className="fa-solid fa-right-to-bracket text-amber-400"></i>{" "}
+                                    Ingresar
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        setMobileMenuOpen(false);
+                                        openModal("register");
+                                    }}
+                                    className="w-full text-center py-2.5 text-xs font-bold text-white bg-emerald-700 rounded-xl border border-emerald-600 flex items-center justify-center gap-2 cursor-pointer"
+                                >
+                                    <i className="fa-solid fa-user-plus text-emerald-300"></i> Crear Cuenta
+                                </button>
+                            </>
+                        )}
                     </div>
                 </div>
             )}

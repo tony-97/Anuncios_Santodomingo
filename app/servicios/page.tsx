@@ -4,7 +4,7 @@ import React from "react";
 import { useAds } from "@/context/AdsContext";
 
 export default function ServiciosPage() {
-  const { openModal } = useAds();
+  const { handlePublishClick } = useAds();
 
   return (
     <div className="flex flex-col min-h-full flex-grow">
@@ -15,7 +15,7 @@ export default function ServiciosPage() {
             Guía & Funcionalidades
           </span>
           <h1 className="text-3xl sm:text-5xl font-black mt-3">
-            Servicios del Sistema Comunitaria
+            Servicios del Sistema Comunitario
           </h1>
           <p className="text-indigo-200 text-sm sm:text-base max-w-2xl mx-auto mt-2">
             Todo lo que necesitas saber para buscar y publicar avisos sin intermediarios ni cobros ocultos.
@@ -35,7 +35,7 @@ export default function ServiciosPage() {
                 Publicación Inmediata
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Publica en menos de 60 segundos sin formularios infinitos ni validaciones molestas.
+                Publica en menos de 60 segundos con tu número de teléfono verificado sin intermediarios.
               </p>
             </div>
             <div className="bg-slate-50 rounded-3xl p-6 border border-slate-200 hover:border-emerald-400 transition shadow-sm">
@@ -46,7 +46,7 @@ export default function ServiciosPage() {
                 Contacto WhatsApp
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Un clic para abrir el chat de WhatsApp directo con el anunciante o realizar una llamada.
+                Un clic para abrir el chat de WhatsApp directo con el anunciante o realizar una llamada directa.
               </p>
             </div>
             <div className="bg-slate-50 rounded-3xl p-6 border border-slate-200 hover:border-amber-400 transition shadow-sm">
@@ -60,15 +60,15 @@ export default function ServiciosPage() {
                 Filtra ofertas en Huánuco Centro, Amarilis, Pillco Marca y zonas vecinas instantáneamente.
               </p>
             </div>
-            <div className="bg-slate-50 rounded-3xl p-6 border border-slate-200 hover:border-rose-400 transition shadow-sm">
-              <div className="w-14 h-14 bg-rose-500 text-white rounded-2xl flex items-center justify-center text-2xl mb-5">
-                <i className="fa-solid fa-key"></i>
+            <div className="bg-slate-50 rounded-3xl p-6 border border-slate-200 hover:border-indigo-400 transition shadow-sm">
+              <div className="w-14 h-14 bg-indigo-900 text-amber-400 rounded-2xl flex items-center justify-center text-2xl mb-5">
+                <i className="fa-solid fa-rectangle-list"></i>
               </div>
               <h3 className="font-extrabold text-lg text-slate-900 mb-2">
-                PIN de Borrado
+                Panel Mis Anuncios
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Control absoluto. Asigna un PIN de 4 dígitos para descolgar tu aviso cuando concretes.
+                Control absoluto. Gestiona y retira tus publicaciones en un solo clic desde tu sesión.
               </p>
             </div>
           </div>
@@ -89,10 +89,10 @@ export default function ServiciosPage() {
                 01
               </span>
               <h3 className="text-lg font-extrabold text-slate-900 mb-2">
-                Haz clic en "Publicar Gratis"
+                Inicia sesión con tu celular
               </h3>
               <p className="text-xs text-slate-600">
-                Abre el formulario desde cualquier pantalla presionando el botón verde.
+                Regístrate o accede de forma segura con tu número de teléfono y código de verificación.
               </p>
             </div>
             <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm relative">
@@ -100,10 +100,10 @@ export default function ServiciosPage() {
                 02
               </span>
               <h3 className="text-lg font-extrabold text-slate-900 mb-2">
-                Llena los datos y tu celular
+                Llena los datos de tu aviso
               </h3>
               <p className="text-xs text-slate-600">
-                Indica el título, descripción, tu número de celular y un PIN de 4 dígitos.
+                Selecciona la categoría (empleo o alquiler), tu distrito, título y descripción detallada.
               </p>
             </div>
             <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm relative">
@@ -111,10 +111,10 @@ export default function ServiciosPage() {
                 03
               </span>
               <h3 className="text-lg font-extrabold text-slate-900 mb-2">
-                ¡Aviso en la Pizarra!
+                ¡Aviso en la Pizarra Digital!
               </h3>
               <p className="text-xs text-slate-600">
-                Tu aviso aparecerá al instante para que los vecinos te contacten.
+                Tu aviso aparecerá al instante para que los vecinos te contacten directamente por WhatsApp.
               </p>
             </div>
           </div>
@@ -139,10 +139,10 @@ export default function ServiciosPage() {
             </div>
             <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
               <h3 className="font-extrabold text-slate-900 text-base mb-1">
-                ¿Cómo puedo borrar mi aviso cuando consiga trabajador o inquilino?
+                ¿Cómo puedo retirar mi aviso cuando consiga trabajador o inquilino?
               </h3>
               <p className="text-xs text-slate-600">
-                Busca tu aviso en la pizarra, presiona el botón "Retirar Anuncio" e ingresa el PIN de 4 dígitos que elegiste al momento de publicar.
+                Simplemente ingresa a tu cuenta, abre el panel <strong>"Mis Anuncios"</strong> en la barra superior y presiona <strong>"Retirar Aviso"</strong> para darlo de baja al instante.
               </p>
             </div>
             <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
@@ -157,7 +157,7 @@ export default function ServiciosPage() {
 
           <div className="text-center mt-10">
             <button
-              onClick={() => openModal("publish")}
+              onClick={handlePublishClick}
               className="bg-emerald-500 hover:bg-emerald-400 text-white font-extrabold px-8 py-3.5 rounded-2xl shadow-lg transition cursor-pointer"
             >
               <i className="fa-solid fa-circle-plus mr-2"></i> Publicar un Anuncio Ahora

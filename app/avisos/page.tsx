@@ -7,7 +7,7 @@ import FlyerCard from "@/components/FlyerCard";
 
 function AvisosContent() {
   const searchParams = useSearchParams();
-  const { anuncios, openModal } = useAds();
+  const { anuncios, handlePublishClick } = useAds();
 
   const [searchQuery, setSearchQuery] = useState("");
   const [currentCategory, setCurrentCategory] = useState<"todos" | "empleo" | "alquiler">("todos");
@@ -126,11 +126,11 @@ function AvisosContent() {
                 No hay avisos coincidentes
               </h3>
               <p className="text-sm text-slate-300 max-w-sm mt-2">
-                Prueba cambiando los términos de búsqueda o publica un nuevo aviso.
+                Prueba cambiando los términos de búsqueda o publica un nuevo aviso en la comunidad.
               </p>
               <button
-                onClick={() => openModal("publish")}
-                className="mt-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-5 py-2.5 rounded-xl text-xs cursor-pointer"
+                onClick={handlePublishClick}
+                className="mt-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-5 py-2.5 rounded-xl text-xs cursor-pointer shadow"
               >
                 Publicar Primer Aviso
               </button>
@@ -143,8 +143,6 @@ function AvisosContent() {
 }
 
 export default function AvisosPage() {
-  const { openModal } = useAds();
-
   return (
     <div className="flex flex-col min-h-full flex-grow">
       <Suspense fallback={<div className="p-12 text-center text-slate-500">Cargando avisos...</div>}>

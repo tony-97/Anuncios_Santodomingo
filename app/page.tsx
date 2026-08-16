@@ -8,7 +8,7 @@ import FlyerCard from "@/components/FlyerCard";
 
 export default function Home() {
   const router = useRouter();
-  const { anuncios, openModal } = useAds();
+  const { anuncios, handlePublishClick } = useAds();
 
   const [searchQuery, setSearchQuery] = useState("");
   const [district, setDistrict] = useState("todos");
@@ -145,7 +145,7 @@ export default function Home() {
 
             {/* Publicación Rápida */}
             <button
-              onClick={() => openModal("publish")}
+              onClick={handlePublishClick}
               className="group bg-amber-50 hover:bg-amber-400 rounded-3xl p-6 border border-amber-200 transition duration-300 flex items-center gap-5 shadow-sm hover:shadow-xl text-left cursor-pointer"
             >
               <div className="w-14 h-14 bg-amber-500 text-white group-hover:bg-indigo-950 group-hover:text-amber-400 rounded-2xl flex items-center justify-center text-2xl shadow transition">
@@ -156,7 +156,7 @@ export default function Home() {
                   📢 Publicar Aviso Gratis
                 </h3>
                 <p className="text-xs text-slate-600 group-hover:text-indigo-950 transition">
-                  Sin contraseñas. Colga tu anuncio hoy
+                  Publica de forma segura con tu celular
                 </p>
               </div>
             </button>
@@ -203,7 +203,7 @@ export default function Home() {
           </p>
           <div className="pt-2">
             <button
-              onClick={() => openModal("publish")}
+              onClick={handlePublishClick}
               className="bg-emerald-500 hover:bg-emerald-400 text-white font-extrabold px-8 py-3.5 rounded-2xl shadow-xl transition transform hover:scale-105 cursor-pointer"
             >
               <i className="fa-solid fa-circle-plus mr-2"></i> Publicar Aviso Gratis Ahora

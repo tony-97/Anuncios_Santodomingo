@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { verifyPin } from "@/lib/auth";
+import { getUserFromRequest } from "@/lib/auth";
 
 // ── GET /api/anuncios/[id] ─ Get a single ad by ID ─────────────
 
@@ -45,7 +45,7 @@ export async function GET(
   }
 }
 
-// ── DELETE /api/anuncios/[id] ─ Delete ad with PIN verification ─
+// ── DELETE /api/anuncios/[id] ─ Delete ad (authenticated user) ─
 
 export async function DELETE(
   request: NextRequest,
@@ -59,13 +59,11 @@ export async function DELETE(
       return Response.json({ error: "ID inválido." }, { status: 400 });
     }
 
-    const body = await request.json();
-    const { pin } = body;
-
-    if (!pin) {
+    const user = await getUserFromRequest(request);
+    if (!user) {
       return Response.json(
-        { error: "El PIN es obligatorio para retirar un anuncio." },
-        { status: 400 }
+        { error: "No autorizado. Inicia sesión para retirar este anuncio." },
+        { status: 401 }
       );
     }
 
@@ -81,11 +79,10 @@ export async function DELETE(
       );
     }
 
-    // ── Verify PIN ──────────────────────────────────────────
-    const pinValid = await verifyPin(pin, anuncio.pin);
-    if (!pinValid) {
+    // ── Verify Ownership ────────────────────────────────────
+    if (anuncio.userId !== user.id) {
       return Response.json(
-        { error: "El PIN de retiro es incorrecto." },
+        { error: "No tienes permiso para retirar un anuncio de otro usuario." },
         { status: 403 }
       );
     }

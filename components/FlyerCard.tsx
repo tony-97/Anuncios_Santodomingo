@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Ad, useAds } from "@/context/AdsContext";
+import { Ad } from "@/context/AdsContext";
 
 function formatDate(dateString: string) {
   const date = new Date(dateString);
@@ -23,8 +23,6 @@ function formatDate(dateString: string) {
 }
 
 export default function FlyerCard({ ad }: { ad: Ad }) {
-  const { openModal } = useAds();
-
   let bgClass = "bg-sky-100 border-sky-300";
   if (ad.color === "amarillo") bgClass = "bg-amber-100 border-amber-300";
   else if (ad.color === "verde") bgClass = "bg-emerald-100 border-emerald-300";
@@ -44,12 +42,12 @@ export default function FlyerCard({ ad }: { ad: Ad }) {
   const rotationClass = rotations[rotIndex];
 
   const waMessage = encodeURIComponent(
-    `Hola! Vi tu anuncio de "${ad.titulo}" en Anuncios Santo Domingo.`
+    `¡Hola! Vi tu aviso clasificado de "${ad.titulo}" en Anuncios Santo Domingo. ¿Aún sigue disponible?`
   );
 
   return (
     <div
-      className={`relative ${bgClass} border-2 rounded-2xl p-6 shadow-lg transform hover:-translate-y-1.5 hover:rotate-0 hover:scale-[1.02] transition duration-300 flex flex-col justify-between pin-effect ${rotationClass} min-h-[320px]`}
+      className={`relative ${bgClass} border-2 rounded-2xl p-6 shadow-lg transform hover:-translate-y-1.5 hover:rotate-0 hover:scale-[1.02] transition duration-300 flex flex-col justify-between pin-effect ${rotationClass} min-h-[300px]`}
     >
       <div>
         <div className="flex justify-between items-start gap-2 mb-3 mt-1">
@@ -90,25 +88,16 @@ export default function FlyerCard({ ad }: { ad: Ad }) {
             href={`https://wa.me/51${ad.telefono}?text=${waMessage}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow transition active:scale-95"
+            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow transition active:scale-95"
           >
             <i className="fa-brands fa-whatsapp text-sm"></i> WhatsApp
           </a>
           <a
             href={`tel:${ad.telefono}`}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow transition active:scale-95"
+            className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow transition active:scale-95"
           >
             <i className="fa-solid fa-phone text-xs"></i> Llamar
           </a>
-        </div>
-
-        <div className="text-center pt-1">
-          <button
-            onClick={() => openModal("delete", ad.id)}
-            className="text-[10px] text-slate-500 hover:text-rose-600 font-bold transition cursor-pointer"
-          >
-            <i className="fa-regular fa-trash-can mr-1"></i> Retirar Anuncio
-          </button>
         </div>
       </div>
     </div>
